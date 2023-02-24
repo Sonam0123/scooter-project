@@ -1,6 +1,6 @@
 class Scooter {
   constructor(station) {
-    station = String;
+    this.station = String;
     this.user = null;
     this.serial = Number;
     this.nextSerial = Number;
@@ -9,8 +9,10 @@ class Scooter {
   }
   // xq
   rent(user) {
-    if(this.charge > 20 && !this.isBroken) {
-    }else if(this.charge < 20 || this.isBroken === true){
+    if(this.charge > 20 && this.isBroken === false) {
+      this.station = null
+      this.user = user
+    }else if(this.charge < 20 && this.isBroken === true){
       throw new Error("scooter needs to charge or scooter needs repair.")
     }
   }

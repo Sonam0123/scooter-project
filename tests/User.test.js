@@ -11,16 +11,37 @@ describe('User object', () => {
     })
 
     // test username
-    test('Check if username is a string', () => {
-        expect(typeof user.username).toEqual('String')
-    })
+    test('check if user is a string', () => {
+        // edit this to be a real test!
+        expect(typeof user.username).toEqual('string');
+    } )
+
+
+
+
+
+
+
+
+    // test login
+    test('check if user is logged in', () => {
+        // edit this to be a real test!
+        user.login(user.password)
+        expect(user.loggedIn).toEqual(true);
+    } )
+
+    // test logout
+
+    test('check if user is logged out', () => {
+        user.logout()
+        expect(user.loggedIn).toEqual(false)
+
   })
 
+})
 
 // test password
 
 // test age
 
-// test login
-
-// test logout
+  

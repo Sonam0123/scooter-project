@@ -15,13 +15,22 @@ describe('scooter object', () => {
 //Method tests
 describe('scooter methods', () => {
   // tests here!
-  const scooter = new Scooter("A");
+  const scooter = new Scooter();
+  
+  //test scooter username
+  
+  test("scooter user name is correct", () => {
+    scooter.user = "allen"
+    expect(
+      scooter.user
+    ).toEqual('allen');
+
+    
+  });
 
   test("renting a scooter with low charge throws an error", () => {
     scooter.charge = 19;
-    expect(() => {
-      scooter.rent(scooter.user);
-    }).toThrowError('scooter needs to charge or scooter needs repair.');
+    expect(scooter.rent(scooter.user)).toThrowError('scooter needs to charge or scooter needs repair.');
   });
 
   //dock method

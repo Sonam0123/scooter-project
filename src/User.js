@@ -1,9 +1,9 @@
 
 class User {
     constructor(username, password, age) {
-        username = String;
-        password = String;
-        age = Number;
+        this.username = String;
+        this.password = String;
+        this.age = Number;
         this.loggedIn = Boolean;
     }
     login(password) {
@@ -14,9 +14,10 @@ class User {
         }
     }
     logout() {
-        this.loggedIn = flse 
+        this.loggedIn = false 
     }
 }
-
+let user = new User()
+// console.log(user.login())
 
 module.exports = User
