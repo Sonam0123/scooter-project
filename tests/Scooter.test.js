@@ -33,12 +33,13 @@ describe('scooter methods', () => {
 
   // make sure low charge throws error
   test("scooter charge is low", () => {
-    expect(scooter.rent(scooter.user)).toThrowError("scooter needs to charge or scooter needs repair.")
+    expect(() => {
+      scooter.rent(scooter.user)
+    }).toThrow("scooter needs to charge or scooter needs repair.")
   });
-
-
-
   
+
+
   //dock method
   test("Scooter must be returned to station", () => {
     const scooter = new Scooter()
