@@ -16,11 +16,14 @@ describe('scooter object', () => {
 describe('scooter methods', () => {
   // tests here!
   const scooter = new Scooter();
-  
+  scooter.user = "allen"
+  scooter.charge = 12
+  scooter.isBroken = true
+  scooter.station = "Brooklyn"
+
   //test scooter username
-  
+
   test("scooter user name is correct", () => {
-    scooter.user = "allen"
     expect(
       scooter.user
     ).toEqual('allen');
@@ -28,14 +31,18 @@ describe('scooter methods', () => {
     
   });
 
-  test("renting a scooter with low charge throws an error", () => {
-    scooter.charge = 19;
-    expect(scooter.rent(scooter.user)).toThrowError('scooter needs to charge or scooter needs repair.');
+  // make sure low charge throws error
+  test("scooter charge is low", () => {
+    expect(scooter.rent(scooter.user)).toThrowError("scooter needs to charge or scooter needs repair.")
   });
 
+
+
+  
   //dock method
   test("Scooter must be returned to station", () => {
-    const scooter = new Scooter("Brooklyn", "Nathaniel")
+    const scooter = new Scooter()
+    scooter.station = "Brooklyn"
     scooter.rent(scooter.user)
     scooter.dock("Brooklyn")
     expect(scooter.station).toEqual("Brooklyn")

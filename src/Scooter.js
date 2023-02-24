@@ -7,15 +7,19 @@ class Scooter {
     this.charge = Number;
     this.isBroken = Boolean;
   }
-  // xq
+ 
   rent(user) {
     if(this.charge > 20 && this.isBroken === false) {
+      this.user = user;
       this.station = null
-      this.user = user
-    }else if(this.charge < 20 && this.isBroken === true){
+      console.log(`Scooter is rented to ${user}`);
+    }
+    else if(this.charge < 20 && this.isBroken === true) {
       throw new Error("scooter needs to charge or scooter needs repair.")
     }
   }
+
+
 
   dock(station) {
     this.station = station; 
@@ -40,6 +44,12 @@ class Scooter {
   }
 
 }
-
+let scoot = new Scooter()
+scoot.user = 'boy'
+scoot.charge=21
+scoot.isBroken = false
+scoot.station = "Brooklyn"
+// console.log(scoot)
+console.log(scoot.rent(scoot.user))
 
 module.exports = Scooter

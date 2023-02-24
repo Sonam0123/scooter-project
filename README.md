@@ -46,7 +46,7 @@ Your constructor must initialize all of the other properties, too.
 Each `Scooter` should have the following methods
 - `rent(user)`
     - If the `Scooter` is charged above 20% and not broken, remove it from its station, check it out to user. 
-    - Otherwise, throw an error scooter needs to charge or scooter needs repair.
+
 
 - `dock(station)`
     - Return the scooter to the station. Be sure to clear out the user, so they don’t get charged unfairly!
