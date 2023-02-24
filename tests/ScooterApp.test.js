@@ -4,6 +4,8 @@ const ScooterApp = require('../src/ScooterApp')
 
 // ScooterApp tests here
 
+
+
 // register user
 
 // log in
