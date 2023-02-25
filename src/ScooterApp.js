@@ -82,9 +82,16 @@ class ScooterApp {
             }
         }
     }
+
+    print() {
+        console.log(this.registeredUsers)
+        console.log(this.stations)
+    }
+
 }
 let app =  new ScooterApp()
 app.createScooter('brooklyn')
-console.log(app.stations)
-
+app.registerUser('allen', '123', 18)
+// console.log(app.stations)
+app.print()
 module.exports = ScooterApp
