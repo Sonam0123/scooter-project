@@ -38,10 +38,14 @@ class ScooterApp {
     }
 
     logoutUser(username) {
+        //user shouldn't be able to logout if they are not logged in
         if(this.registeredUsers[username] !== undefined) {
             this.registeredUsers[username].logout()
             console.log(`${username} has been logged out`)
+        }else if(user.loggedIn === false) {
+            throw new Error(`user isn't logged in`)
         }
+
     }
 
     createScooter(station) {
