@@ -50,6 +50,5 @@ scoot.charge=21
 scoot.isBroken = false
 scoot.station = "Brooklyn"
 // console.log(scoot)
-console.log(scoot.rent(scoot.user))
 
 module.exports = Scooter
