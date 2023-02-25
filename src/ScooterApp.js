@@ -26,15 +26,17 @@ class ScooterApp {
             return user
     }
     
-    // loginUser(username, password) {
-    //     if(this.registeredUsers[username] !== undefined) {
-    //         this.registeredUsers[username].login(password)
-    //         console.log((`${username} has been logged in`))
-    //     }else {
-    //         throw new Error(`Username or password is incorrect`)
-    //     }
-    
-    // }
+    loginUser(username, password) {
+        if(this.registeredUsers[username] !== undefined) {
+            this.registeredUsers[username].login(password)
+            console.log(`${username} has been logged in`)
+        }else {
+            throw new Error(`Username or password is incorrect`)
+        }
+        return this.registeredUsers[username]
+
+    }
+
     // logoutUser(username) {
     //     if(this.registeredUsers[username] !== undefined) {
     //         this.registeredUsers[username].logout()

@@ -17,13 +17,19 @@ describe('Is app an object', () => {
         app.registerUser("allen", "123", 18)
         expect(app.registeredUsers["allen"].username).toEqual("allen")
     }) 
+    // log in
+    test('check if user can be logged in', () => {
+        expect(app.loginUser("allen", "123")).toEqual(app.registeredUsers["allen"])
+    })
+
+    // log out
+    
+
 
 })
 
 
-// log in
 
-// log out
 
 // rent scooter
 
