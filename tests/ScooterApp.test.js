@@ -23,14 +23,16 @@ describe('Is app an object', () => {
     })
 
     // log out
-    
+    test('check if user can be logged out', () => {
+        app.logoutUser("allen")
+        expect(app.registeredUsers["allen"].loggedIn).toEqual(false)
+    })
+
+    // rent scooter
 
 
 })
 
 
-
-
-// rent scooter
 
 // dock scooter

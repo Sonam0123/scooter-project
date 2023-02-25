@@ -37,14 +37,13 @@ class ScooterApp {
 
     }
 
-    // logoutUser(username) {
-    //     if(this.registeredUsers[username] !== undefined) {
-    //         this.registeredUsers[username].logout()
-    //         console.log(`${username} is loged out`)
-    //     }else {
-    //         throw new Error(`no such user is logged in`)
-    //     }
-    // }
+    logoutUser(username) {
+        if(this.registeredUsers[username] !== undefined) {
+            this.registeredUsers[username].logout()
+            console.log(`${username} has been logged out`)
+        }
+    }
+
     // createScooter(station) {
     //     let scooter = new Scooter()
     //     if(this.stations[station] !== undefined) {
