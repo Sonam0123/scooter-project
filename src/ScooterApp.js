@@ -14,16 +14,18 @@ class ScooterApp {
     }
     registerUser(username, password, age) {
         let user = new User(username, password, age)
-        if(!(this.registeredUsers[username]) && user.age >= 18) {
+        if(!(this.registeredUsers[username])) {
             this.registeredUsers[username] = user
+            user.username = username
+            user.password = password
+            user.age = age
             console.log(`${username} has been registered`)
-            return user
-        }else if(this.registeredUsers[username]) {
-            throw new Error("already registered")
-        }else if(user.age < 18) {
-            throw new Error("too young to register")
+        }else if(this.registeredUsers[username]){
+            throw new Error("username already exists")
         }
+            return user
     }
+    
     // loginUser(username, password) {
     //     if(this.registeredUsers[username] !== undefined) {
     //         this.registeredUsers[username].login(password)

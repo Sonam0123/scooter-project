@@ -15,8 +15,8 @@ describe('Is app an object', () => {
     // register user
     test('check if user is registered', () => {
         app.registerUser("allen", "123", 18)
-        console.log(app.registeredUsers)
-    })
+        expect(app.registeredUsers["allen"].username).toEqual("allen")
+    }) 
 
 })
 
