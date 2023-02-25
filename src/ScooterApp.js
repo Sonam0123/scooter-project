@@ -56,23 +56,32 @@ class ScooterApp {
         return scooter
     }
 
-    
-    
-    // dockScooter(scooter, station) {
-    //     let scooter = new Scooter()
-    //     for(let station in this.stations) {
-    //         for(let i = 0; i < station.length; i++) {
-    //             if(station[i] === scooter) {
-    //                 throw new Error('scooter already at station')
-    //             }
-    //         }
-    //     }
-    //     if(this.stations[station]) {
-    //         this.stations[station].push(scooter)
-    //         console.log(`scooter is docked`)
-    //     }
-    // }
+    dockScooter(scooter, station) {
+        if(this.stations[station]) {
+            if(scooter.station === station) {
+                throw new Error(`scooter already at station`)
+            }else {
+                this.stations[station].push(scooter)
 
+                scooter.station = station
+                console.log(`scooter is docked`)
+            }
+        }else if(!(this.stations[station])){
+            throw new Error(`no such station`)
+        }
+    }
+  
+    rentScooter(scooter, user) {
+        if(this.stations[scooter.station]) {
+            if(scooter.user !== null) {
+                throw new Error(`scooter already rented`)
+            }else {
+                scooter.user = user
+                scooter.station = null
+                console.log(`scooter is rented`)
+            }
+        }
+    }
 }
 let app =  new ScooterApp()
 app.createScooter('brooklyn')
