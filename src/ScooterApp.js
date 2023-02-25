@@ -44,32 +44,36 @@ class ScooterApp {
         }
     }
 
-    // createScooter(station) {
-    //     let scooter = new Scooter()
-    //     if(this.stations[station] !== undefined) {
-    //         this.stations[station].push(scooter)
-    //         scooter.station = station
-    //         console.log("created new scooter")
-    //         return scooter
-    //     }else {
-    //         throw new Error("no such station")
-    //     }
-    // }
-    // dockScooter(scooter, station) {
-    //     if(this.stations[station] !== undefined) {
-    //         if(scooter.station === station) {
-    //             throw new Error("scooter already at station")
-    //         }else {
-    //             this.stations[scooter.station].splice(this.stations[scooter.station].indexOf(scooter), 1)
-    //             this.stations[station].push(scooter)
-    //             scooter.station = station
-    //             console.log("scooter is docked")
-    //         }
-    //     }else {
-    //         throw new Error("no such station")
-    //     }
-    // }
+    createScooter(station) {
+        let scooter = new Scooter()
+        if(this.stations[station]) {
+            this.stations[station].push(scooter)
+            scooter.station = station
+            console.log(`created new scooter`)
+        }else if(!(this.stations[station])){
+            throw new Error(`no such station`)
+        }
+        return scooter
+    }
+    
+    dockScooter(scooter, station) {
+        if(this.stations[station] !== undefined) {
+            if(scooter.station === station) {
+                throw new Error("scooter already at station")
+            }else {
+                this.stations[scooter.station].splice(this.stations[scooter.station].indexOf(scooter), 1)
+                this.stations[station].push(scooter)
+                scooter.station = station
+                console.log("scooter is docked")
+            }
+        }else {
+            throw new Error("no such station")
+        }
+    }
 
 }
+let app =  new ScooterApp()
+app.createScooter('brooklyn')
+console.log(app.stations)
 
 module.exports = ScooterApp
