@@ -1,6 +1,7 @@
 const User = require('./User')
 const Scooter = require('./Scooter')
 
+let scooter = new Scooter()
 
 class ScooterApp {
     
@@ -38,7 +39,6 @@ class ScooterApp {
     }
 
     logoutUser(username) {
-        //user shouldn't be able to logout if they are not logged in
         if(this.registeredUsers[username] !== undefined) {
             this.registeredUsers[username].logout()
             console.log(`${username} has been logged out`)
@@ -49,7 +49,6 @@ class ScooterApp {
     }
 
     createScooter(station) {
-        let scooter = new Scooter()
         if(this.stations[station]) {
             this.stations[station].push(scooter)
             scooter.station = station
@@ -75,17 +74,17 @@ class ScooterApp {
         }
     }
   
-
     rentScooter(scooter, user) {
-        if(this.stations[scooter.station]) {
-            if(scooter.user !== user) {
-                throw new Error(`scooter already rented`)
-            }else {
-                scooter.user = user
-                scooter.station = null
-                console.log(`scooter is rented`)
-            }
+        if(scooter.user === user) {
+            throw new Error(`scooter already rented`)
         }
+        for(let station in this.stations) {
+            const index = this.stations[station].indexOf(scooter);
+            this.stations[station].splice(index, 1);
+            break;
+        }
+        scooter.rent(user)
+        console.log(`scooter is rented`)
     }
 
 
@@ -111,5 +110,7 @@ class ScooterApp {
 // app.rentScooter(scooter, 'allen')
 // // app.rentScooter(scooter, 'benny')
 // app.print()
+
+
 
 module.exports = ScooterApp

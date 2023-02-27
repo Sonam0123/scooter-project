@@ -4,9 +4,9 @@ const ScooterApp = require('../src/ScooterApp')
 
 // ScooterApp tests here
 
+const app = new ScooterApp()
+console.log(app.stations)
 describe('Is app an object', () => {
-    const app = new ScooterApp()
-
 
     test('check if app is an object', () => {
       // edit this to be a real test!
@@ -45,20 +45,14 @@ describe('Is app an object', () => {
 
 
     // log out
-    test('check if user can be logged out', () => {
-        app.loginUser('allen', '123', 18)
-        app.logoutUser('allen')
-        expect(() => {
-            app.logoutUser('allen').toThrow('no such user is logged in')
-        })
+    test('throw error if no such user is logged in', () => {
+        expect(() => app.logoutUser('brady')).toThrow(`no such user is logged in`)
     })
-    //test if user is logged in to throw error user isn't logged in
-    // test('check if user is logged in', () => {
-    //     const user = new User('benny', '11111', 54)
-    //     user.loggedIn = false
-    //     expect( app.logoutUser('benny')).toThrow(`user isn't logged in`)
-    // })
-
+    //test if user password is incorrect to throw error Username or password is incorrect 
+    test('check if user is logged in', () => {
+        app.registerUser('brady', '123', 18)
+        expect(() => {app.loginUser('bray', '1234', 18)}).toThrow(`Username or password is incorrect`)
+    })
 
     //create scooter
 
@@ -107,22 +101,24 @@ describe('Is app an object', () => {
 
 
     // rent scooter
-
     test('check if scooter can be rented', () => {
+        const scooter = new Scooter("brooklyn");
+        const user = new User("Sonam", "123", 23);
+        const scooterList = app.stations["brooklyn"];
+        scooterList.push(scooter);
+        app.rentScooter(scooter, user);
+        
+
+    })
+
+
+    //check if error throws for same user
+    test('check if error throws for same user', () => {
         let scooter = new Scooter()
         app.dockScooter(scooter, 'brooklyn')
         app.rentScooter(scooter, 'allen')
+        expect(() => app.rentScooter('allen')).toThrow('scooter already rented')
         console.log(scooter.user)
-        expect(scooter.user).toEqual('allen')
-    })
-
-    //test if user isnt null to throw error user is already renting a scooter
-    test('check if user is already renting a scooter', () => {
-        let scooter = new Scooter()
-        app.dockScooter(scooter, 'brooklyn')
-        expect(() => {
-            app.rentScooter(scooter, 'allen')
-            }).toThrow("scooter already rented")
     })
 
 })
