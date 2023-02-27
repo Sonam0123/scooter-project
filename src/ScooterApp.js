@@ -75,6 +75,7 @@ class ScooterApp {
         }
     }
   
+
     rentScooter(scooter, user) {
         if(this.stations[scooter.station]) {
             if(scooter.user !== user) {
@@ -86,6 +87,7 @@ class ScooterApp {
             }
         }
     }
+
 
     print() {
         console.log(this.registeredUsers)

@@ -112,7 +112,7 @@ describe('Is app an object', () => {
         let scooter = new Scooter()
         app.dockScooter(scooter, 'brooklyn')
         app.rentScooter(scooter, 'allen')
-        console.log(scooter)
+        console.log(scooter.user)
         expect(scooter.user).toEqual('allen')
     })
 
@@ -120,10 +120,9 @@ describe('Is app an object', () => {
     test('check if user is already renting a scooter', () => {
         let scooter = new Scooter()
         app.dockScooter(scooter, 'brooklyn')
-        app.rentScooter(scooter, 'allen')
         expect(() => {
             app.rentScooter(scooter, 'allen')
-            }).toThrow("scoter already rented")
+            }).toThrow("scooter already rented")
     })
 
 })
