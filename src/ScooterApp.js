@@ -42,8 +42,8 @@ class ScooterApp {
         if(this.registeredUsers[username] !== undefined) {
             this.registeredUsers[username].logout()
             console.log(`${username} has been logged out`)
-        }else if(user.loggedIn === false) {
-            throw new Error(`user isn't logged in`)
+        }else if(this.registeredUsers[username] === undefined) {
+            throw new Error(`no such user is logged in`)
         }
 
     }
@@ -77,7 +77,7 @@ class ScooterApp {
   
     rentScooter(scooter, user) {
         if(this.stations[scooter.station]) {
-            if(scooter.user !== null) {
+            if(scooter.user !== user) {
                 throw new Error(`scooter already rented`)
             }else {
                 scooter.user = user
@@ -93,9 +93,21 @@ class ScooterApp {
     }
 
 }
-let app =  new ScooterApp()
-app.createScooter('brooklyn')
-app.registerUser('allen', '123', 18)
-// console.log(app.stations)
-app.print()
+// let app = new ScooterApp()
+// app.registerUser("allen", "123", 18)
+// app.loginUser("allen", "123")
+// app.logoutUser("allen")
+// console.log(app.registeredUsers.allen.loggedIn)
+// console.log(app.registeredUsers['allen'].loggedIn)
+
+
+// let app = new ScooterApp()
+// let scooter = new Scooter()
+// app.registerUser('allen', '123', 18)
+// app.registerUser('benny', '11111', 54)
+// app.dockScooter(scooter, 'brooklyn')
+// app.rentScooter(scooter, 'allen')
+// // app.rentScooter(scooter, 'benny')
+// app.print()
+
 module.exports = ScooterApp

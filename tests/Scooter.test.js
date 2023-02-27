@@ -31,12 +31,26 @@ describe('scooter methods', () => {
     
   });
 
-  // make sure low charge throws error
-  test("scooter charge is low", () => {
+  //rent method
+  test("check if scooter can be rented", () => {
     expect(() => {
       scooter.rent(scooter.user)
     }).toThrow("scooter needs to charge or scooter needs repair.")
   });
+  
+  test('check if scooter is given to user', () => {
+    scooter.charge = 100
+    scooter.isBroken = false
+    scooter.rent(scooter.user)
+    expect(scooter.user).toEqual("allen")
+  })
+
+  test('check if station is null after rent', () => {
+    scooter.charge = 100
+    scooter.isBroken = false
+    scooter.rent(scooter.user)
+    expect(scooter.station).toBe(null)
+  })
   
 
 

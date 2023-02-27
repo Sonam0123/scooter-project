@@ -10,7 +10,7 @@ class User {
         if(this.password === password) {
             this.loggedIn = true
         }else {
-            throw new Error("incorrect password error")
+            throw new Error("Username or password is incorrect")
         }
     }
     logout() {

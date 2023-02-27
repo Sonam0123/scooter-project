@@ -29,7 +29,7 @@ describe('User object', () => {
     test('check if wrong password throws error', () => {
         expect(() => {
             user.login('wrong password')
-        }).toThrow('incorrect password error')
+        }).toThrow('Username or password is incorrect')
     })
 
     // test logout
