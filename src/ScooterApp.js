@@ -88,18 +88,13 @@ class ScooterApp {
     }
 
 
+    //print() method should print out the current state of the app
     print() {
-        console.log(this.registeredUsers)
-        console.log(this.stations)
+        console.log(this)
     }
+    
 
 }
-// let app = new ScooterApp()
-// app.registerUser("allen", "123", 18)
-// app.loginUser("allen", "123")
-// app.logoutUser("allen")
-// console.log(app.registeredUsers.allen.loggedIn)
-// console.log(app.registeredUsers['allen'].loggedIn)
 
 
 // let app = new ScooterApp()

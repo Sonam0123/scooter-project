@@ -5,7 +5,6 @@ const ScooterApp = require('../src/ScooterApp')
 // ScooterApp tests here
 
 const app = new ScooterApp()
-console.log(app.stations)
 describe('Is app an object', () => {
 
     test('check if app is an object', () => {
@@ -48,6 +47,15 @@ describe('Is app an object', () => {
     test('throw error if no such user is logged in', () => {
         expect(() => app.logoutUser('brady')).toThrow(`no such user is logged in`)
     })
+
+    //if username isn't undefined registeredUsers[username].logout()
+    test('check if user can be logged out', () => {
+        app.registerUser('timmothy', '123', 18)
+        app.loginUser('timmothy', '123')
+        app.logoutUser('timmothy')
+        expect(app.registeredUsers['timmothy'].loggedIn).toEqual(false)
+    })
+
     //test if user password is incorrect to throw error Username or password is incorrect 
     test('check if user is logged in', () => {
         app.registerUser('brady', '123', 18)
@@ -112,6 +120,7 @@ describe('Is app an object', () => {
     })
 
 
+
     //check if error throws for same user
     test('check if error throws for same user', () => {
         let scooter = new Scooter()
@@ -119,6 +128,11 @@ describe('Is app an object', () => {
         app.rentScooter(scooter, 'allen')
         expect(() => app.rentScooter('allen')).toThrow('scooter already rented')
         console.log(scooter.user)
+    })
+
+    //print method should log all registered users and stations
+    test('check if print method logs all registered users and stations', () => {
+        expect(console.log(app.print())).toEqual(console.log(app.registeredUsers, app.stations))
     })
 
 })
